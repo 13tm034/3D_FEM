@@ -65,9 +65,9 @@ void Node::convert_f(char *s, node *no){
 		force3[i] = s[56 + i];
 	}
 
-	no[atoi(num)].xf[0] = atof(force1);
-	no[atoi(num)].xf[1] = atof(force2);
-	no[atoi(num)].xf[2] = atof(force3);
+	no[atoi(num)-1].xf[0] = atof(force1);
+	no[atoi(num)-1].xf[1] = atof(force2);
+	no[atoi(num)-1].xf[2] = atof(force3);
 
 }
 
@@ -78,6 +78,8 @@ void Node::convert_rc(char *s, node *no){
 	char rc1[8] = { '\0' };
 	char rc2[8] = { '\0' };
 	char rc3[8] = { '\0' };
+
+
 
 	for (int i = 0; i < 8; i++){
 		num[i] = s[24 + i];

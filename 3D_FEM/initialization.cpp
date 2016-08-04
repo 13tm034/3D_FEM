@@ -7,7 +7,7 @@ void  initial(double **K, double *S, node *no, element *el, material *ml,int N,i
 
 	
 
-	for (int i = 0; i < N + N + N; i++){
+	for (int i = 0; i < N+N+N; i++){
 		S[i] = 0;
 	}
 

@@ -23,7 +23,7 @@ void solve_matrix(double **A, double *b, int N){
 	denov = (double *)malloc(3 * N*sizeof(double));
 	
 	double *numv;
-	numv = (double *)malloc(N*sizeof(double));
+	numv = (double *)malloc(3*N*sizeof(double));
 
 	double alpha = 0;
 	double beta = 0;
@@ -51,13 +51,13 @@ void solve_matrix(double **A, double *b, int N){
 		printf("\n");
 	}*/
 	
-	/*for (int i = 0; i < N + N + N; i++){
+	for (int i = 0; i < N + N + N; i++){
 		double pivot = A[i][i];
 		for (int j = 0; j < N + N + N; j++){
 			A[i][j] = A[i][j] / pivot;
 		}
 		b[i] = b[i] / pivot;
-	}*/
+	}
 
 
 
