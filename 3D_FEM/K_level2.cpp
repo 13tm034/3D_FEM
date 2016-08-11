@@ -114,15 +114,6 @@ void Kematrix(node *no, element *el, material *m, double Ke[][24],int i){
 
 				BDBmatrix(B, D, pKe);			//BÇ∆DçsóÒÇÃêœ
 
-				/*for (int j = 0; j < 24; j++){
-					for (int k = 0; k < 24; k++){
-
-						printf("%lf", pKe[j][k]);
-					}
-					printf("\n");
-				}*/
-
-
 				product_detJ_weight(pKe, detJ, w);		//detJÇ∆weightÇpKeÇ…Ç©ÇØÇÈ
 
 

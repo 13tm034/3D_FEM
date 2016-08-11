@@ -35,8 +35,8 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 	double kariJ[6][6] = {};
 	jacob(J, dndr, nd, r);
 
-	/*printf("J\n");*/
-	/*for (int j = 0; j < 3; j++){
+	/*printf("J\n");
+	for (int j = 0; j < 3; j++){
 		for (int k = 0; k < 3; k++){
 			printf("%lf,", J[i][j]);
 		}
@@ -82,7 +82,7 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 	/*dndxの計算*/
 	double dndx[3][8] = {};		//dn/dx
 	DnDx(dndx, invJ,dndr);
-
+	
 
 	/*Bマトリクスへ展開*/
 	for (int j = 0; j < 8; j++){
@@ -96,7 +96,6 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 		B[5][j + j + j + 2] = dndx[0][j];
 		B[5][j + j + j] = dndx[2][j];
 	}
-	
 
 
 }
@@ -136,6 +135,8 @@ void BDBmatrix(double B[][24], double D[][6], double Ke[][24]){
 
 	double Bt[24][6] = {};					//Bの転地
 	rollingB(Bt, B);
+
+
 
 	double BD[24][6] = {};					//BとDの積
 	productBtD(Bt, D, BD);

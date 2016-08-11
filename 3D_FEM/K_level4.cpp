@@ -74,11 +74,12 @@ void jacob(double J[][3], double dndr[][8], double nd[][8],double *r){		//201606
 
 				J[2][0] += dndr[2][l] * nd[0][l];
 				J[2][1] += dndr[2][l] * nd[1][l];
+				J[2][2] += dndr[2][l] * nd[2][l];
 	
 			}
 
 
-
+			
 	
 
 }
