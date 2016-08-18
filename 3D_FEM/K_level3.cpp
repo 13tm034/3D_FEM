@@ -187,6 +187,7 @@ void det_jacob(double J[][3], double *detJ){
 	if (*detJ <= 0){
 		system("PAUSE");
 
+
 	}*/
 
 }
