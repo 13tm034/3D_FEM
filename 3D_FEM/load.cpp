@@ -200,7 +200,7 @@ void Material::convert_m(char *s, material *m){
 		v[i] = s[32 + i];
 	}
 
-	m[0].e = atof(e)*10000000;
+	m[0].e = atof(e);
 	m[0].v = atof(v);
 }
 

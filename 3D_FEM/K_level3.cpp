@@ -32,7 +32,7 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 
 	/*jacobマトリクスの作成*/
 	double dndr[3][8] = {};		//dn/dr
-	double kariJ[6][6] = {};
+	double kariJ[3][3] = {};
 	jacob(J, dndr, nd, r);
 
 	/*printf("J\n");
@@ -89,12 +89,15 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 		B[0][j + j + j] = dndx[0][j];
 		B[1][j + j + j + 1] = dndx[1][j];
 		B[2][j + j + j + 2] = dndx[2][j];
+		
 		B[3][j + j + j] = dndx[1][j];
 		B[3][j + j + j + 1] = dndx[0][j];
-		B[4][j + j + j + 1] = dndx[2][j];
-		B[4][j + j + j + 2] = dndx[1][j];
-		B[5][j + j + j + 2] = dndx[0][j];
-		B[5][j + j + j] = dndx[2][j];
+		
+		B[4][j + j + j] = dndx[2][j];
+		B[4][j + j + j + 2] = dndx[0][j];
+		
+		B[5][j + j + j + 1] = dndx[2][j];
+		B[5][j + j + j + 2] = dndx[1][j];
 	}
 
 

@@ -129,7 +129,7 @@ void solve_matrix(double **A, double *b, int N){
 		for (int i = 0; i < N+N+N; i++){
 			sum += r1[i] * r1[i];
 		}
-		printf("Trial:\t%d\tResidual Error:\t%lf\n",count, sum);
+		printf("Trial:\t%d\tResidual Error:\t%1.20f\n",count, sum);
 		if (sum < EPS*EPS) break;		//EPS‚Ì”»’f
 
 
