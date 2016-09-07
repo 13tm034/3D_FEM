@@ -200,7 +200,23 @@ void Material::convert_m(char *s, material *m){
 		v[i] = s[32 + i];
 	}
 
-	m[0].e = atof(e);
+	char en[8] = { '\0' };
+	char es[8] = { '\0' };
+	int i = 0;
+	while (e[i] != '+'){
+		en[i] = e[i];
+		i++;
+	}
+
+	int lim = i;
+	int j = 0;
+	for (i = lim-1; i < 8; i++){
+		es[i] = e[j];
+		j++;
+	}
+	printf("<<<<<<<%c\n", es[0]);
+
+	m[0].e = atof(en)*pow(10.0, 7);
 	m[0].v = atof(v);
 }
 

@@ -90,8 +90,9 @@ void solve_matrix(double **A, double *b, int N){
 	printf("Trial:\t%d\tResidual Error:\t%lf\n", 0, sum);
 	
 	//system("PAUSE");
+	int check = 0;
 	while (sum > EPS*EPS){
-
+		check = 0;
 		num = 0;
 		deno = 0;
 		for (int i = 0; i < N + N + N; i++){
@@ -131,7 +132,7 @@ void solve_matrix(double **A, double *b, int N){
 		}
 		printf("Trial:\t%d\tResidual Error:\t%1.20f\n",count, sum);
 		if (sum < EPS*EPS) break;		//EPS‚Ì”»’f
-
+		check = 1;
 
 		for (int i = 0; i < N+N+N; i++){
 			denov[i] = 0;
@@ -172,10 +173,16 @@ void solve_matrix(double **A, double *b, int N){
 
 		count++;
 	}
-	for (int i = 0; i < N+N+N; i++){
-		b[i] = x0[i];
+	if (check == 1){
+		for (int i = 0; i < N + N + N; i++){
+			b[i] = x0[i];
+		}
 	}
-
+	else{
+		for (int i = 0; i < N + N + N; i++){
+			b[i] = x1[i];
+		}
+	}
 	printf("SOLVING PROCESS END");
 
 

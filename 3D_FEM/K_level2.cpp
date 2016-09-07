@@ -8,19 +8,19 @@ void addK(element *el, double Ke[][24], double **K, int i){
 	/*要素接点番号から全体節点番号を出力*/
 	int n[8] = {};					//全体節点番号
 
-	//for (int j = 0; j < 8; j++){
-	//	n[j] = el[i].node[j];
-	//}
+	for (int j = 0; j < 8; j++){
+		n[j] = el[i].node[j];
+	}
 
 
-	n[0] = el[i].node[4];
-	n[1] = el[i].node[7];
-	n[2] = el[i].node[6];
-	n[3] = el[i].node[5];
-	n[4] = el[i].node[0];
-	n[5] = el[i].node[3];
-	n[6] = el[i].node[2];
-	n[7] = el[i].node[1];
+	//n[0] = el[i].node[4];
+	//n[1] = el[i].node[7];
+	//n[2] = el[i].node[6];
+	//n[3] = el[i].node[5];
+	//n[4] = el[i].node[0];
+	//n[5] = el[i].node[3];
+	//n[6] = el[i].node[2];
+	//n[7] = el[i].node[1];
 	
 
 	/*全体節点番号に従い要素剛性行列を全体剛性行列に加算*/

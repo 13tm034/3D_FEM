@@ -128,4 +128,10 @@ void time_display(char *s);
 //kari
 void inv_K(double **K);
 
+
+//output
+void coordinate_output(node *no, int N);
+void element_node_output(element *el, int E);
+void result_output(element *el, node *no, double *S, int E, int N);
+
 #endif

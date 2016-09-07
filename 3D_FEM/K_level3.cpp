@@ -16,16 +16,13 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 	}
 
 
-
-
-
-
 	double nd[3][8] = {};			//一要素の各節点の座標値
 
 	for (int j = 0; j < 8; j++){
 		nd[0][j] = no[n[j]].x[0];
 		nd[1][j] = no[n[j]].x[1];
 		nd[2][j] = no[n[j]].x[2];
+		//printf("node %d = (%lf,%lf,%lf)\n", j, nd[0][j], nd[1][j], nd[2][j]);
 	}
 
 	
@@ -61,21 +58,21 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 		}
 	}
 
-	/*printf("invJ\n");
-	for (int j=0; j < 3; j++){
-		for (int k = 0; k < 3; k++){
-			printf("%lf,", invJ[i][j]);
-		}
-		printf("\n");
-	}*/
+	//printf("invJ\n");
+	//for (int j=0; j < 3; j++){
+	//	for (int k = 0; k < 3; k++){
+	//		printf("%lf,", invJ[i][j]);
+	//	}
+	//	printf("\n");
+	//}
 
-	/*printf("kariJ\n");
-	for (int j = 0; j < 3; j++){
-		for (int k = 0; k < 3; k++){
-			printf("%lf,", kariJ[i][j]);
-		}
-		printf("\n");
-	}*/
+	//printf("kariJ\n");
+	//for (int j = 0; j < 3; j++){
+	//	for (int k = 0; k < 3; k++){
+	//		printf("%lf,", kariJ[i][j]);
+	//	}
+	//	printf("\n");
+	//}
 
 
 
@@ -93,11 +90,11 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 		B[3][j + j + j] = dndx[1][j];
 		B[3][j + j + j + 1] = dndx[0][j];
 		
-		B[4][j + j + j] = dndx[2][j];
-		B[4][j + j + j + 2] = dndx[0][j];
+		B[5][j + j + j] = dndx[2][j];
+		B[5][j + j + j + 2] = dndx[0][j];
 		
-		B[5][j + j + j + 1] = dndx[2][j];
-		B[5][j + j + j + 2] = dndx[1][j];
+		B[4][j + j + j + 1] = dndx[2][j];
+		B[4][j + j + j + 2] = dndx[1][j];
 	}
 
 
@@ -113,7 +110,9 @@ void Dmatrix(double D[][6], material *m, int i, element *el){	//20160609debug
 	for (int j = 0; j < 3; j++){			//対角成分
 		for (int k = 0; k < 3; k++){
 			D[j][k] = 1;
-			D[j + 3][k + 3] = (1 - 2 * v) / (2 * (1 - v));
+		if (j == k){
+			D[j + 3][k + 3] = (1 - 2 * v) / (2 * (1 - v));//if
+		}
 		}
 	}
 

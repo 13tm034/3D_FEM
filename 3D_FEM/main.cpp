@@ -79,7 +79,7 @@ int main(void){
 	info_M(m);
 	printf("N=%d,E=%d,M=%d\n", N, E, M);
 	for (int i = 0; i < N; i++){
-		printf("node=%d,x=%lf,%lf,%lf,xf=%lf,%lf,%lf,xrc=%d,%d,%d\n"
+		printf("node=%d, x=%10f,%10f,%10f, xf=%10f,%10f,%10f, xrc=%d,%d,%d\n"
 			, i, no[i].x[0], no[i].x[1], no[i].x[2], no[i].xf[0], no[i].xf[1], no[i].xf[2]
 			, no[i].xrc[0], no[i].xrc[1], no[i].xrc[2]);
 	}
@@ -121,6 +121,10 @@ int main(void){
 
 
 	difference_output(S, N);
+	coordinate_output(no, N);
+	element_node_output(el, E);
+	result_output(el, no, S, E, N);
+
 	system("PAUSE");
 
 }

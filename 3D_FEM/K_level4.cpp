@@ -61,7 +61,7 @@ void jacob(double J[][3], double dndr[][8], double nd[][8],double *r){		//201606
 	dndr[1][7] = (1 - r[0])*(1 + r[2]) * 0.125;
 	dndr[2][7] = (1 - r[0])*(1 + r[1]) * 0.125;
 
-	
+
 
 			for (int l = 0; l < 8; l++){
 				J[0][0] += dndr[0][l] * nd[0][l];
