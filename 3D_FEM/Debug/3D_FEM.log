@@ -1,9 +1,8 @@
-﻿2016/09/06 21:06:33 にビルドを開始しました。
+﻿2016/09/07 21:08:36 にビルドを開始しました。
      1>ノード 2 上のプロジェクト "C:\Users\user\Documents\Visual Studio 2013\Projects\FEM\3D\3D_FEM20160801\3D_FEM\3D_FEM.vcxproj" (Build ターゲット)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt output.cpp
-         output.cpp
-     1>c:\users\user\documents\visual studio 2013\projects\fem\3d\3d_fem20160801\3d_fem\output.cpp(121): warning C4129: 'V' : エスケープ シーケンスとして正しく認識されませんでした。
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stress_strain.cpp
+         stress_strain.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Documents\Visual Studio 2013\Projects\FEM\3D\3D_FEM20160801\Debug\3D_FEM.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\Documents\Visual Studio 2013\Projects\FEM\3D\3D_FEM20160801\Debug\3D_FEM.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Documents\Visual Studio 2013\Projects\FEM\3D\3D_FEM20160801\Debug\3D_FEM.lib" /MACHINE:X86 Debug\initialization.obj
          Debug\K_level1.obj
@@ -16,10 +15,11 @@
          Debug\main.obj
          Debug\output.obj
          Debug\solve_matrix.obj
+         Debug\stress_strain.obj
          Debug\timer.obj
          3D_FEM.vcxproj -> C:\Users\user\Documents\Visual Studio 2013\Projects\FEM\3D\3D_FEM20160801\Debug\3D_FEM.exe
      1>プロジェクト "C:\Users\user\Documents\Visual Studio 2013\Projects\FEM\3D\3D_FEM20160801\3D_FEM\3D_FEM.vcxproj" (Build ターゲット) のビルドが完了しました。
 
 ビルドに成功しました。
 
-経過時間 00:00:00.30
+経過時間 00:00:00.26

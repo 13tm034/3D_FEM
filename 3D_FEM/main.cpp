@@ -5,6 +5,7 @@
 
 
 int main(void){
+
 	//printf("                     ##                                                                      ##                      \n");
 	//printf("  ## #               ##                                                 ###  ###             ##                      \n");
 	//printf(" #  ##                       #                                           #    #                                      \n");
@@ -69,6 +70,7 @@ int main(void){
 	declare_check2(E, N, M);
 	printf("%d*%d STIFFNES MATRIX\n", N+N+N,N+N+N);
 	printf("%d STRAIN VECTOR\n", N + N + N);
+	
 	/*initialization*/
 	initial(K, S, no, el, m, N, E, M);
 	
@@ -105,28 +107,39 @@ int main(void){
 	printf("e=%lf,v=%lf\n",m[0].e,m[0].v);
 	original_output(no, N);
 	system("PAUSE");
+
 	/*Kmatrix start*/
 	DISPLAY("STIFFNESS MATRIX");
-	Kmatrix_log();
+	//Kmatrix_log();
 	Kmatrix(no, el, m, K, E, N, M);
 	
 	DISPLAY("SET BOUNDARY CONDITIONS")
 	setBC(no, S, K, E, N, M);
 	
-	Kmatrix_BC(K, N);
+	//Kmatrix_BC(K, N);
 	S_BC(S, N);
 
 	DISPLAY("SOLVING MATRIX");
+	clock_t start, end;
+	start = clock();
 	solve_matrix(K, S, N);
-
+	end = clock();
+	printf("èàóùéûä‘Å@%d\n", end - start);
+	for (int i = 0; i < N; i++){
+		no[i].xd[0] = S[i + i + i];
+		no[i].xd[1] = S[i + i + i + 1];
+		no[i].xd[2] = S[i + i + i + 2];
+	
+	}
 
 	difference_output(S, N);
 	coordinate_output(no, N);
 	element_node_output(el, E);
+	strain_stress_calc(no, el, m, E, N, M);
 	result_output(el, no, S, E, N);
+	
 
 	system("PAUSE");
-
 }
 
 

@@ -23,6 +23,7 @@
 //20160721	節点番号のつけ方をdn/drの部分を元に戻し、入力の時点でかえる
 //20160726	節点番号のつけ方の試行
 //20160811	デバッグ中ナストラン一要素では発散→横山さんに確認
+//20160907  変位は正しく出せるようになった→次には応力、ひずみ
 #include<time.h>
 #include<string.h>
 
@@ -52,6 +53,9 @@ typedef struct nodes{
 typedef struct elements{
 
 	int node[8];		//要素節点座標
+	double stress[6];	//
+	double strain[6];
+	double mises;
 	int m;				//材料番号
 }element;
 
@@ -105,9 +109,15 @@ void info_E(element *el,int E);															//要素情報の読み込み
 void info_M(material *m);
 
 //initial
-
 void initial(double **K, double *S, node *no, element *el, material *ml,int N,int E,int M); //動的な変数の初期化
 
+
+//stress_strain
+void strain_stress_calc(node *no, element *el, material *m, int E, int N, int M);
+void addB(double B[][24], double b[][24], double *w, double detJ);
+void calc_strain(double B[][24], element *el, node *no, int i);
+void mises_strain(element *el, int i);
+void calc_stress(double D[][6], element *el, node *no, int i);
 
 //log
 void declare_check(void);
@@ -121,7 +131,6 @@ void S_BC(double *S, int N);
 
 
 //timer
-
 void time_display(char *s);
 
 

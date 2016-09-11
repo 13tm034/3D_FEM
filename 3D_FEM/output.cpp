@@ -15,6 +15,7 @@ void difference_output(double *S,int N){
 
 	for (int i = 0; i < N; i++){
 		fprintf(fp_result, "%19.5e %19.5e %19.5e\n", S[3 * i], S[3 * i + 1], S[3 * i + 2]);
+		printf("differ=%lf\n", sqrt(S[3 * i] * S[3 * i] + S[3 * i + 1] * S[3 * i + 1] + S[3 * i + 2] * S[3 * i + 2]));
 	}
 
 
@@ -122,6 +123,17 @@ void result_output(element *el, node *no,  double *S,int E, int N){
 	for (int i = 0; i < N; i++){
 		fprintf(fp_result, "%lf %lf %lf\n", S[3 * i] ,S[3 * i + 1], S[3 * i + 2]);
 	}
+	fprintf(fp_result, "\VECTORS nodal_force float\n");
+	for (int i = 0; i < N; i++){
+		fprintf(fp_result, "%lf %lf %lf\n", no[i].xf[0], no[i].xf[1], no[i].xf[2]);
+	}
 
+	fprintf(fp_result, "\n\n");
+	fprintf(fp_result, "CELL_DATA %d\n", E);
+	fprintf(fp_result, "SCALARS mises float 1\n");
+	fprintf(fp_result, "LOOKUP_TABLE mises\n");
+	for (int i = 0; i < E; i++){
+		fprintf(fp_result, "%lf\n",el[i].mises);
+	}
 	fclose(fp_result);
 }

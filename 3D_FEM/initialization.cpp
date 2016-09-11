@@ -29,8 +29,14 @@ void  initial(double **K, double *S, node *no, element *el, material *ml,int N,i
 
 	for (int i = 0; i < E; i++){
 		el[i].m = 0;
+		el[i].mises = 0;
 		for (int j = 0; j < 8; j++){
 			el[i].node[j] = 0;
+		}
+
+		for (int j = 0; j < 6; j++){
+			el[i].strain[j] = 0;
+			el[i].stress[j] = 0;
 		}
 	}
 
