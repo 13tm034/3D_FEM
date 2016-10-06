@@ -26,6 +26,7 @@ void addK(element *el, double Ke[][24], double **K, int i){
 	/*全体節点番号に従い要素剛性行列を全体剛性行列に加算*/
 	for (int j = 0; j < 8; j++){
 		for (int k = 0; k < 8; k++){
+			//printf("%d,%d\n", n[j] + n[j] + n[j], i);
 			K[n[j] + n[j] + n[j]][n[k] + n[k] + n[k]] += Ke[j + j + j][k + k + k];
 			
 			K[n[j] + n[j] + n[j] + 1][n[k] + n[k] + n[k]] += Ke[j + j + j + 1][k + k + k];

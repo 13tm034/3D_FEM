@@ -15,6 +15,7 @@ void Kmatrix(node *no, element *el, material *m, double **K, int E, int N, int M
 		//Kematrix_log1(Ke, i);
 		addK(el, Ke,K,i);
 		printf("Element Stiffness Matrix:\t%d\n", i);
+	
 	}
 
 

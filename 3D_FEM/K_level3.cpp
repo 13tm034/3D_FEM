@@ -32,13 +32,13 @@ void Bmatrix(node *no, element *el, double B[][24], int i,double *r,double J[][3
 	double kariJ[3][3] = {};
 	jacob(J, dndr, nd, r);
 
-	/*printf("J\n");
-	for (int j = 0; j < 3; j++){
-		for (int k = 0; k < 3; k++){
-			printf("%lf,", J[i][j]);
-		}
-		printf("\n");
-	}*/
+	//printf("J\n");
+	//for (int j = 0; j < 3; j++){
+	//	for (int k = 0; k < 3; k++){
+	//		printf("%lf,", J[i][j]);
+	//	}
+	//	printf("\n");
+	//}
 
 
 	for (int j = 0; j < 3; j++){

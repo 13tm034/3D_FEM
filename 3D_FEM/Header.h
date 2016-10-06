@@ -24,6 +24,7 @@
 //20160726	節点番号のつけ方の試行
 //20160811	デバッグ中ナストラン一要素では発散→横山さんに確認
 //20160907  変位は正しく出せるようになった→次には応力、ひずみ
+//20160914	NASTRANのノードが必ずしも順番通りでないことが発覚→NASTRANnodeから本来のノードを参照できるようにする
 #include<time.h>
 #include<string.h>
 
@@ -44,6 +45,7 @@
 typedef struct nodes{
 
 	double x[3];		//座標
+	int num;
 	int xrc[3];			//拘束条件
 	double xd[3];		//変位
 	double xf[3];		//節点力
@@ -104,7 +106,7 @@ void original_output(node *no, int N);
 
 //load
 void load_number(int *N, int *E,int *M);											//要素数、節点数の入力
-void info_N(node *no);																//節点情報の読み込み
+void info_N(node *no,int N);																//節点情報の読み込み
 void info_E(element *el,int E);															//要素情報の読み込み
 void info_M(material *m);
 
@@ -116,7 +118,7 @@ void initial(double **K, double *S, node *no, element *el, material *ml,int N,in
 void strain_stress_calc(node *no, element *el, material *m, int E, int N, int M);
 void addB(double B[][24], double b[][24], double *w, double detJ);
 void calc_strain(double B[][24], element *el, node *no, int i);
-void mises_strain(element *el, int i);
+void mises_strain(element *el, int i,material *m);
 void calc_stress(double D[][6], element *el, node *no, int i);
 
 //log

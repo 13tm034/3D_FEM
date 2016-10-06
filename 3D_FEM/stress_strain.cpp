@@ -61,7 +61,7 @@ void strain_stress_calc(node *no, element *el, material *m, int E, int N, int M)
 
 		calc_strain(B, el, no, i);
 		calc_stress(D, el, no, i);
-		mises_strain(el, i);
+		mises_strain(el,i,m);
 
 	}
 
@@ -70,7 +70,7 @@ void strain_stress_calc(node *no, element *el, material *m, int E, int N, int M)
 
 
 
-void mises_strain(element *el, int i){
+void mises_strain(element *el, int i,material *m){
 
 
 	double s[6] = {};
@@ -83,7 +83,7 @@ void mises_strain(element *el, int i){
 	double sig2 = (s[1] - s[2])*(s[1] - s[2]);
 	double sig3 = (s[2] - s[0])*(s[2] - s[0]);
 	double sig4 = 2 * (s[3] * s[3] + s[4] * s[4] + s[5] * s[5]);
-	el[i].mises = sqrt((sig1 + sig2 + sig3 + 3 * sig4) / 2);
+	el[i].mises = sqrt(m[0].e*(sig1 + sig2 + sig3 + 3 * sig4) / 2);
 	printf("mises=%lf\n", el[i].mises);
 
 }
@@ -107,12 +107,9 @@ void calc_strain(double B[][24], element *el, node *no, int i){
 
 	int n[8] = {};					//全体節点番号
 
-
-
 	for (int j = 0; j < 8; j++){
 		n[j] = el[i].node[j];
 	}
-
 
 	double nd[24] = {};			//一要素の各節点の座標値
 

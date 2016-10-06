@@ -36,7 +36,9 @@ int main(void){
 	/*load number*/
 	DISPLAY("LOAD NUMBER");
 	int N, *pN, E, *pE, M, *pM;
-
+	N = 0;
+	E = 0;
+	M = 0;
 	pN = &N;		//節点数
 	pE = &E;		//要素数
 	pM = &M;		//材料種数
@@ -76,8 +78,71 @@ int main(void){
 	
 	/*load_node_element*/
 	DISPLAY("LOAD");
-	info_N(no);
+	info_N(no,N);
+	int *NASTRAN_no;
+	NASTRAN_no = (int *)malloc(sizeof(int)*(no[N-1].num));
+	for (int i = 0; i < no[N - 1].num; i++){
+		NASTRAN_no[i] = 0;
+	}
+
+	for (int i = 0; i < N; i++){
+		NASTRAN_no[no[i].num] = i;
+	}
+	
+	//for (int i = 0; i < no[N - 1].num; i++){
+	//	printf("%d,%d\n", NASTRAN_no[i],i);
+	//}
+	//NASATRAN node　から元のノードが参照できるようにする
+
 	info_E(el,E);
+	
+
+	for (int i = 0; i < E; i++){
+		for (int j = 0; j < 8; j++){
+			/*printf("(%d,%d)", el[i].node[j], NASTRAN_no[el[i].node[j]]);*/
+			el[i].node[j] = NASTRAN_no[el[i].node[j]];
+		}
+		/*printf("\n");*/
+	}
+	//要素節点番号をNASTEANnodeから本来のノードに変換
+
+	int element[8] = {};
+
+	for (int i = 0; i < E; i++){
+		for (int j = 0; j < 8; j++){
+			element[j] = el[i].node[j];
+		}
+		//el[i].node[0] = element[4];
+		//el[i].node[1] = element[7];
+		//el[i].node[2] = element[6];
+		//el[i].node[3] = element[5];
+		//el[i].node[4] = element[0];
+		//el[i].node[5] = element[3];
+		//el[i].node[6] = element[2];
+		//el[i].node[7] = element[1];
+
+		el[i].node[0] = element[3];
+		el[i].node[1] = element[7];
+		el[i].node[2] = element[4];
+		el[i].node[3] = element[0];
+		el[i].node[4] = element[2];
+		el[i].node[5] = element[6];
+		el[i].node[6] = element[5];
+		el[i].node[7] = element[1];
+
+
+		//el[i].node[0] = element[0];
+		//el[i].node[1] = element[1];
+		//el[i].node[2] = element[2];
+		//el[i].node[3] = element[3];
+		//el[i].node[4] = element[4];
+		//el[i].node[5] = element[5];
+		//el[i].node[6] = element[6];
+		//el[i].node[7] = element[7];
+		
+	}
+
+
 	info_M(m);
 	printf("N=%d,E=%d,M=%d\n", N, E, M);
 	for (int i = 0; i < N; i++){
@@ -117,7 +182,7 @@ int main(void){
 	setBC(no, S, K, E, N, M);
 	
 	//Kmatrix_BC(K, N);
-	S_BC(S, N);
+	//S_BC(S, N);
 
 	DISPLAY("SOLVING MATRIX");
 	clock_t start, end;
